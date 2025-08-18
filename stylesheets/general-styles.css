@@ -32,6 +32,12 @@ h1 {
     padding: 2.8rem;
     background-color: #ffffff;
     border-radius: 14px;
+    gap: 2rem;
+    min-width: 60vw;
+}
+
+.main-container > section {
+    width: 50%;
 }
 
 footer {

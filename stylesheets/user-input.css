@@ -1,0 +1,26 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+section.user-input {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.user-input > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    text-align: end;
+    padding: 0.3rem 1rem;
+    font-size: 1.5rem;
+    background-color: #f3f8fb;
+    border-radius: 7px;
+}
