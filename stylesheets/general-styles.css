@@ -8,6 +8,32 @@ body {
     align-items: center;
 }
 
+img {
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 96px;   /* 6rem */
+}
+
+h1 {
+    align-self: center;
+    margin-bottom: 64px; /* 4rem */
+}
+
+.main-container {
+    display: flex;
+    padding: 2.8rem;
+    background-color: #ffffff;
+    border-radius: 14px;
+}
+
 footer {
     margin-top: auto;
     padding: 1rem;
