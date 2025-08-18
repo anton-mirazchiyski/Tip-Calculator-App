@@ -16,18 +16,25 @@
   </style>
 </head>
 <body>
+  <section class="user-input">
+    <label for="bill">Bill</label>
+    <input type="number" id="bill" name="bill" value="0" min="0" class="bill-input">
+    <img src="images/icon-dollar.svg" alt="icon-dollar" class="dollar-icon">
 
-  Bill
+    <p>Select Tip %</p>
+    <ul class="tip-percentage-list">
+      <li><button>5%</button></li>
+      <li><button>10%</button></li>
+      <li><button>15%</button></li>
+      <li><button>25%</button></li>
+      <li><button>50%</button></li>
+      <li><button>Custom</button></li>
+    </ul>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
+    <label for="people">Number of People</label>
+    <input type="number" id="people" name="people" value="0" min="1" class="people-input">
+    <img src="images/icon-person.svg" alt="icon-person" class="person-icon">
+  </section>
 
   Tip Amount
   / person
