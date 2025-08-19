@@ -39,6 +39,10 @@ input[type="number"] {
     max-width: 5vw;
 }
 
+.select-tip-text {
+    color: #5b7071;
+}
+
 ul.tip-percentage-list {
     list-style-type: none;
     display: flex;
@@ -56,11 +60,15 @@ ul.tip-percentage-list button {
 .percentage-btn {
     padding: 0.3rem 2rem;
     min-width: 123px;
+    background-color: #00474b;
+    color: #fff;
 }
 
 .custom-percentage-btn {
     max-width: 123px;
     padding: 0.3rem 1.2rem;
+    background-color: #f3f8fb;
+    color: #6a8786;
 }
 
 input[type="number"]::placeholder {
