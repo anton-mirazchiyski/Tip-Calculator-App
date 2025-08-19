@@ -39,6 +39,30 @@ input[type="number"] {
     max-width: 5vw;
 }
 
+ul.tip-percentage-list {
+    list-style-type: none;
+    display: flex;
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.3rem;
+}
+
+ul.tip-percentage-list button {
+    border-radius: 5px;
+    border-width: 0;
+}
+
+.percentage-btn {
+    padding: 0.3rem 2rem;
+    min-width: 123px;
+}
+
+.custom-percentage-btn {
+    max-width: 123px;
+    padding: 0.3rem 1.2rem;
+}
+
 input[type="number"]::placeholder {
     color: #9bb9bb;
 }
