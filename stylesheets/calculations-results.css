@@ -43,3 +43,7 @@ section.result {
 .currency {
     font-size: 2.2rem;
 }
+
+.reset-result-btn:hover {
+    background-color: #9fe8df;
+}

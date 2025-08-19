@@ -30,6 +30,7 @@ input[type="number"] {
     border-width: 0;
     outline: none;
     position: relative;
+    cursor: pointer;
 }
 
 .input-icon-container {
@@ -74,4 +75,18 @@ ul.tip-percentage-list button {
 
 input[type="number"]::placeholder {
     color: #9bb9bb;
+}
+
+.bill-input:focus, .people-input:focus {
+    border: 2px solid #75c6bb;
+}
+
+.percentage-btn:hover {
+    background-color: #9fe8df;
+    color: #00474b;
+}
+
+.percentage-btn:focus {
+    background-color: #26c2ad;
+    color: #005452;
 }
