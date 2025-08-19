@@ -2,16 +2,44 @@ section.result {
     display: flex;
     flex-direction: column;
     gap: 3.5rem;
-    border: 1px solid #000;
-    border-radius: 9px;
+    background-color: #00474b;
+    border-radius: 11px;
     padding: 2.5rem 2rem 2rem 2rem;
 }
 
 .reset-result-btn {
     font-size: 1.4rem;
     text-transform: uppercase;
-    margin-top: 2rem;
+    margin-top: 3.5rem;
     border-radius: 6px;
     border-width: 0;
     padding: 0.3rem 0;
+    background-color: #0d686d;
+    color: #055e64;
+}
+
+.result-text > p {
+    color: #fff;
+}
+
+.result-text > span {
+    color: #568e92;
+}
+
+.tip-amount-result, .total-amount-result {
+    display: flex;
+    justify-content: space-between;
+}
+
+.amount-container {
+    align-self: center;
+    color: #2bbfac;
+}
+
+.tip-amount, .total-amount {
+    font-size: 2.3rem;
+}
+
+.currency {
+    font-size: 2.2rem;
 }
