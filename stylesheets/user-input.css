@@ -50,6 +50,7 @@ ul.tip-percentage-list {
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 0.3rem;
+    margin-bottom: 0.6rem;
 }
 
 ul.tip-percentage-list button {
