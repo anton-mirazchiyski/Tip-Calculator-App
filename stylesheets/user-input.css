@@ -16,6 +16,10 @@ section.user-input {
     gap: 0.5rem;
 }
 
+.user-input label {
+    color: #5b7071;
+}
+
 input[type="number"] {
     -moz-appearance: textfield;
     text-align: end;
@@ -23,4 +27,18 @@ input[type="number"] {
     font-size: 1.5rem;
     background-color: #f3f8fb;
     border-radius: 7px;
+    border-width: 0;
+    outline: none;
+    position: relative;
+}
+
+.input-icon-container {
+    position: relative;
+    bottom: 40px;
+    left: 15px;
+    max-width: 5vw;
+}
+
+input[type="number"]::placeholder {
+    color: #9bb9bb;
 }
