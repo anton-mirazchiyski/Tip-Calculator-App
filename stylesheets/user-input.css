@@ -66,19 +66,29 @@ ul.tip-percentage-list button {
     color: #fff;
 }
 
-.custom-percentage-btn {
+.custom-percentage-input {
     max-width: 123px;
-    padding: 0.3rem 1.2rem;
+    padding: 0.3rem 1rem;
     background-color: #f3f8fb;
-    color: #6a8786;
+    color: #084b50;
+    border-width: 0;
+    border-radius: 5px;
+    outline: none;
+    text-align: end;
+    caret-color: #a2ece0;
+    
 }
 
 input[type="number"]::placeholder {
     color: #9bb9bb;
 }
 
-.bill-input:focus, .people-input:focus {
-    border: 2px solid #75c6bb;
+.custom-percentage-input::placeholder {
+    color: #5b7878;
+}
+
+.bill-input:focus, .people-input:focus, .custom-percentage-input:focus {
+    box-shadow: 0 0 1px 2px #75c6bb;
 }
 
 .percentage-btn:hover {
