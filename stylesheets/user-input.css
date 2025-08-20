@@ -82,7 +82,10 @@ ul.tip-percentage-list button {
     outline: none;
     text-align: end;
     caret-color: #a2ece0;
-    
+}
+
+.selected-custom-input {
+    box-shadow: 0 0 1px 2px #75c6bb;
 }
 
 input[type="number"]::placeholder {
