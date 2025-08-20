@@ -60,10 +60,16 @@ ul.tip-percentage-list button {
 }
 
 .percentage-btn {
+    display: block;
     padding: 0.3rem 2rem;
     min-width: 123px;
     background-color: #00474b;
     color: #fff;
+}
+
+.selected-percentage-btn {
+    background-color: #26c2ad;
+    color: #005452;
 }
 
 .custom-percentage-input {
