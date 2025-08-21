@@ -8,6 +8,8 @@ const peopleInputElement = document.querySelector('input.people-input');
 const tipAmountResultElement = document.querySelector('.tip-amount');
 const totalAmountResultElement = document.querySelector('.total-amount');
 
+const resetResultButtonElement = document.querySelector('.reset-result-btn');
+
 
 billInputElement.addEventListener('input', (event) => {
     const tipPercentageNumber = helper_funcs.getSelectedTipPercentage();
@@ -64,6 +66,8 @@ customPercentageInputElement.addEventListener('input', (event) => {
         calculateTotalAmountPerPerson(bill, percentage, peopleCount);
     }
 });
+
+resetResultButtonElement.addEventListener('click', helper_funcs.resetData);
 
 
 function calculateTipAmountPerPerson(bill, percentage, peopleCount) {

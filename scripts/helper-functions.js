@@ -3,6 +3,9 @@ const percentageButtonElements = document.querySelectorAll('button.percentage-bt
 const customPercentageInputElement = document.querySelector('input.custom-percentage-input');
 const peopleInputElement = document.querySelector('input.people-input');
 
+const tipAmountResultElement = document.querySelector('.tip-amount');
+const totalAmountResultElement = document.querySelector('.total-amount');
+
 
 export const getBillAmount = () => {
     if (billInputElement.value != '') {
@@ -48,4 +51,14 @@ export function extractNumberFromCustomPercentageInput() {
     if (content) {
         return Number(content.match(/\d+/g)[0]);
     }
+}
+
+
+export function resetData() {
+    tipAmountResultElement.textContent = '0.00';
+    totalAmountResultElement.textContent = '0.00';
+    
+    clearAllSelectedButtons();
+    clearSelectedCustomInput();
+    [billInputElement, peopleInputElement, customPercentageInputElement].forEach(element => element.value = '');
 }
