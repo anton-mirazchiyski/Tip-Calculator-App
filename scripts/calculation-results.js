@@ -7,6 +7,12 @@ const tipAmountResultElement = document.querySelector('.tip-amount');
 const totalAmountResultElement = document.querySelector('.total-amount');
 
 
+const getBillAmount = () => {
+    if (billInputElement.value != '') {
+        return Number(billInputElement.value);
+    }
+}
+
 const getSelectedTipPercentage = () => {
     const selectedPercentageButton = Array.from(percentageButtonElements)
                                         .find(percentageButton => percentageButton.classList.contains('selected-percentage-btn'));
@@ -23,7 +29,7 @@ const getSelectedTipPercentage = () => {
 
 const getPeopleCount = () => {
     if (peopleInputElement.value != '') {
-        return peopleInputElement.value;
+        return Number(peopleInputElement.value);
     }
 }
 
@@ -56,12 +62,38 @@ percentageButtonElements.forEach(percentageButton => {
         clearAllSelectedButtons();
         clearSelectedCustomInput();
         event.target.classList.add('selected-percentage-btn');
+
+        const tipPercentageNumber = extractNumberFromPercentageButton(event.target);
+        const percentage = tipPercentageNumber / 100;
+        const bill = getBillAmount();
+        const peopleCount = getPeopleCount();
+
+        if (bill && peopleCount) {
+            calculateTipAmountPerPerson(bill, percentage, peopleCount);
+            calculateTotalAmountPerPerson(bill, percentage, peopleCount);
+        }
     });
 });
 
 customPercentageInputElement.addEventListener('focus', (event) => {
     clearAllSelectedButtons();
     event.target.classList.add('selected-custom-input');
+});
+
+customPercentageInputElement.addEventListener('input', (event) => {
+    const tipPercentageNumber = extractNumberFromCustomPercentageInput(event.target);
+    let percentage;
+
+    if (tipPercentageNumber) {
+        percentage = tipPercentageNumber / 100;
+    }
+    const bill = getBillAmount();
+    const peopleCount = getPeopleCount();
+
+    if (percentage && bill && peopleCount) {
+        calculateTipAmountPerPerson(bill, percentage, peopleCount);
+        calculateTotalAmountPerPerson(bill, percentage, peopleCount);
+    }
 });
 
 
@@ -71,7 +103,9 @@ function extractNumberFromPercentageButton(percentageButton) {
 
 function extractNumberFromCustomPercentageInput() {
     const content = customPercentageInputElement.value;
-    return Number(content.match(/\d+/g)[0]);
+    if (content) {
+        return Number(content.match(/\d+/g)[0]);
+    }
 }
 
 function calculateTipAmountPerPerson(bill, percentage, peopleCount) {
