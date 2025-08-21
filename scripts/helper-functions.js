@@ -30,18 +30,16 @@ export const getSelectedTipPercentage = () => {
 }
 
 export const getPeopleCount = () => {
-    if (Number(peopleInputElement.value) <= 0) {
-        peopleInputErrorElement.style.display = 'block';
-        peopleInputElement.style.boxShadow = '0 0 1px 2px #df8577';
+    const peopleCount = Number(peopleInputElement.value);
+
+    if (peopleInputElement.value == '') {
         return;
     }
-
-    peopleInputElement.style.boxShadow = '';
-    peopleInputErrorElement.style.display = 'none';
-
-    if (peopleInputElement.value != '') {
-        return Number(peopleInputElement.value);
+    
+    if (!peopleCountIsValid(peopleCount)) {
+        return;
     }
+    return peopleCount;
 }
 
 export const clearAllSelectedButtons = () => {
@@ -65,10 +63,22 @@ export function extractNumberFromCustomPercentageInput() {
 }
 
 
+export function peopleCountIsValid(peopleCount) {
+    if (peopleCount <= 0) {
+        peopleInputErrorElement.style.display = 'block';
+        peopleInputElement.style.boxShadow = '0 0 1px 2px #df8577';
+        return false;
+    }
+
+    peopleInputElement.style.boxShadow = '';
+    peopleInputErrorElement.style.display = 'none';
+    return true;
+}
+
 export function resetData() {
     tipAmountResultElement.textContent = '0.00';
     totalAmountResultElement.textContent = '0.00';
-    
+
     clearAllSelectedButtons();
     clearSelectedCustomInput();
     [billInputElement, peopleInputElement, customPercentageInputElement].forEach(element => element.value = '');
