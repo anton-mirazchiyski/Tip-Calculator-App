@@ -45,7 +45,10 @@
         </div>
 
         <div>
-          <label for="people">Number of People</label>
+          <div class="people-input-label-container">
+            <label for="people">Number of People</label>
+            <span class="people-input-error-message">Can't be zero</span>
+          </div>
           <input type="number" id="people" name="people" placeholder="0" min="1" class="people-input">
           <div class="input-icon-container"><img src="images/icon-person.svg" alt="icon-person" class="person-icon"></div>
         </div>

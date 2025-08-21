@@ -6,6 +6,8 @@ const peopleInputElement = document.querySelector('input.people-input');
 const tipAmountResultElement = document.querySelector('.tip-amount');
 const totalAmountResultElement = document.querySelector('.total-amount');
 
+const peopleInputErrorElement = document.querySelector('.people-input-error-message');
+
 
 export const getBillAmount = () => {
     if (billInputElement.value != '') {
@@ -28,6 +30,15 @@ export const getSelectedTipPercentage = () => {
 }
 
 export const getPeopleCount = () => {
+    if (Number(peopleInputElement.value) <= 0) {
+        peopleInputErrorElement.style.display = 'block';
+        peopleInputElement.style.boxShadow = '0 0 1px 2px #df8577';
+        return;
+    }
+
+    peopleInputElement.style.boxShadow = '';
+    peopleInputErrorElement.style.display = 'none';
+
     if (peopleInputElement.value != '') {
         return Number(peopleInputElement.value);
     }

@@ -84,6 +84,16 @@ ul.tip-percentage-list button {
     caret-color: #a2ece0;
 }
 
+.people-input-label-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.people-input-error-message {
+    color: #df8577;
+    display: none;
+}
+
 .selected-custom-input {
     box-shadow: 0 0 1px 2px #75c6bb;
 }
