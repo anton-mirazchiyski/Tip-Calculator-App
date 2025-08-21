@@ -1,6 +1,9 @@
 const billInputElement = document.querySelector('input.bill-input');
 const percentageButtonElements = document.querySelectorAll('button.percentage-btn');
 const customPercentageInputElement = document.querySelector('input.custom-percentage-input');
+const peopleInputElement = document.querySelector('input.people-input');
+
+const tipAmountResultElement = document.querySelector('.tip-amount');
 
 
 const getSelectedTipPercentage = () => {
@@ -13,6 +16,14 @@ const getSelectedTipPercentage = () => {
     if (customPercentageInputElement.classList.contains('selected-custom-input') && customPercentageInputElement.value != '') {
         return extractNumberFromCustomPercentageInput();
     }
+
+    return null;
+}
+
+const getPeopleCount = () => {
+    if (peopleInputElement.value != '') {
+        return peopleInputElement.value;
+    }
 }
 
 const clearAllSelectedButtons = () => {
@@ -22,8 +33,18 @@ const clearAllSelectedButtons = () => {
 const clearSelectedCustomInput = () => customPercentageInputElement.classList.remove('selected-custom-input');
 
 
-billInputElement.addEventListener('input', () => {
-
+billInputElement.addEventListener('input', (event) => {
+    const tipPercentageNumber = getSelectedTipPercentage();
+    let percentage;
+    
+    if (tipPercentageNumber) {
+        percentage = tipPercentageNumber / 100;
+    }
+    const peopleCount = getPeopleCount();
+    
+    if (percentage && peopleCount) {
+        calculateTipAmountPerPerson(event.target.value, percentage, peopleCount);
+    }
 });
 
 percentageButtonElements.forEach(percentageButton => {
@@ -48,4 +69,11 @@ function extractNumberFromPercentageButton(percentageButton) {
 function extractNumberFromCustomPercentageInput() {
     const content = customPercentageInputElement.value;
     return Number(content.match(/\d+/g)[0]);
+}
+
+function calculateTipAmountPerPerson(bill, percentage, peopleCount) {
+    const totalTipAmount = bill * percentage;
+    const tipAmountForPerson = totalTipAmount / peopleCount;
+
+    tipAmountResultElement.textContent = tipAmountForPerson.toFixed(2);
 }
