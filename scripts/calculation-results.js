@@ -4,6 +4,7 @@ const customPercentageInputElement = document.querySelector('input.custom-percen
 const peopleInputElement = document.querySelector('input.people-input');
 
 const tipAmountResultElement = document.querySelector('.tip-amount');
+const totalAmountResultElement = document.querySelector('.total-amount');
 
 
 const getSelectedTipPercentage = () => {
@@ -41,9 +42,11 @@ billInputElement.addEventListener('input', (event) => {
         percentage = tipPercentageNumber / 100;
     }
     const peopleCount = getPeopleCount();
-    
+    const billAmount = Number(event.target.value);
+
     if (percentage && peopleCount) {
-        calculateTipAmountPerPerson(event.target.value, percentage, peopleCount);
+        calculateTipAmountPerPerson(billAmount, percentage, peopleCount);
+        calculateTotalAmountPerPerson(billAmount, percentage, peopleCount);
     }
 });
 
@@ -76,4 +79,12 @@ function calculateTipAmountPerPerson(bill, percentage, peopleCount) {
     const tipAmountForPerson = totalTipAmount / peopleCount;
 
     tipAmountResultElement.textContent = tipAmountForPerson.toFixed(2);
+}
+
+function calculateTotalAmountPerPerson(bill, percentage, peopleCount) {
+    const totalTipAmount = bill * percentage;
+    const totalPaymentAmount = bill + totalTipAmount;
+    const totalPaymentAmountForPerson = totalPaymentAmount / peopleCount;
+
+    totalAmountResultElement.textContent = totalPaymentAmountForPerson.toFixed(2);
 }
