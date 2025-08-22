@@ -1,0 +1,28 @@
+@media (max-width: 600px) {
+    .main-container {
+        flex-direction: column;
+        width: 100vw;
+        padding: 2.5rem;
+    }
+
+    .main-container > section {
+        width: 100%;
+    }
+
+    ul.tip-percentage-list button,
+    ul.tip-percentage-list input {
+        min-width: 137px;
+    }
+
+    .currency {
+        font-size: 2rem;
+    }
+
+    .tip-amount, .total-amount {
+        font-size: 2.1rem;
+    }
+
+    .reset-result-btn {
+        margin-top: 0;
+    }
+}
