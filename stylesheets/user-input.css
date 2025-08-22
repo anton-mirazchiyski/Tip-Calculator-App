@@ -25,11 +25,13 @@ input[type="number"] {
     text-align: end;
     padding: 0.3rem 1rem;
     font-size: 1.5rem;
+    color: #084b50;
     background-color: #f3f8fb;
     border-radius: 7px;
     border-width: 0;
     outline: none;
     position: relative;
+    caret-color: #a2ece0;
     cursor: pointer;
 }
 
@@ -54,17 +56,14 @@ ul.tip-percentage-list {
     margin-bottom: 0.6rem;
 }
 
-ul.tip-percentage-list button {
-    border-radius: 5px;
-    border-width: 0;
-}
-
 .percentage-btn {
     display: block;
-    padding: 0.3rem 2rem;
+    padding: 0.4rem 2rem;
     min-width: 123px;
     background-color: #00474b;
     color: #fff;
+    border-radius: 6px;
+    border-width: 0;
 }
 
 .selected-percentage-btn {
@@ -74,14 +73,15 @@ ul.tip-percentage-list button {
 
 .custom-percentage-input {
     max-width: 123px;
-    padding: 0.3rem 1rem;
+    padding: 0.4rem 1rem;
     background-color: #f3f8fb;
     color: #084b50;
     border-width: 0;
-    border-radius: 5px;
+    border-radius: 6px;
     outline: none;
     text-align: end;
     caret-color: #a2ece0;
+    cursor: pointer;
 }
 
 .people-input-label-container {
@@ -98,6 +98,7 @@ ul.tip-percentage-list button {
     box-shadow: 0 0 1px 2px #75c6bb;
 }
 
+
 input[type="number"]::placeholder {
     color: #9bb9bb;
 }
@@ -106,16 +107,11 @@ input[type="number"]::placeholder {
     color: #5b7878;
 }
 
-.bill-input:focus, .people-input:focus, .custom-percentage-input:focus {
+.bill-input:focus, .people-input:focus {
     box-shadow: 0 0 1px 2px #75c6bb;
 }
 
 .percentage-btn:hover {
     background-color: #9fe8df;
     color: #00474b;
-}
-
-.percentage-btn:focus {
-    background-color: #26c2ad;
-    color: #005452;
 }
