@@ -12,18 +12,13 @@ const resetResultButtonElement = document.querySelector('.reset-result-btn');
 
 
 billInputElement.addEventListener('input', (event) => {
-    const tipPercentageNumber = helper_funcs.getSelectedTipPercentage();
-    let percentage;
-    
-    if (tipPercentageNumber) {
-        percentage = tipPercentageNumber / 100;
-    }
+    const tipPercentage = helper_funcs.getSelectedTipPercentage();
     const peopleCount = helper_funcs.getPeopleCount();
     const billAmount = helper_funcs.getBillAmount();
 
-    if (percentage && peopleCount) {
-        calculateTipAmountPerPerson(billAmount, percentage, peopleCount);
-        calculateTotalAmountPerPerson(billAmount, percentage, peopleCount);
+    if (billAmount && tipPercentage && peopleCount) {
+        calculateTipAmountPerPerson(billAmount, tipPercentage, peopleCount);
+        calculateTotalAmountPerPerson(billAmount, tipPercentage, peopleCount);
     }
 });
 
@@ -34,14 +29,13 @@ percentageButtonElements.forEach(percentageButton => {
         helper_funcs.clearSelectedCustomInput();
         event.target.classList.add('selected-percentage-btn');
 
-        const tipPercentageNumber = helper_funcs.extractNumberFromPercentageButton(event.target);
-        const percentage = tipPercentageNumber / 100;
+        const tipPercentage = helper_funcs.extractNumberFromPercentageButton(event.target);
         const bill = helper_funcs.getBillAmount();
         const peopleCount = helper_funcs.getPeopleCount();
 
         if (bill && peopleCount) {
-            calculateTipAmountPerPerson(bill, percentage, peopleCount);
-            calculateTotalAmountPerPerson(bill, percentage, peopleCount);
+            calculateTipAmountPerPerson(bill, tipPercentage, peopleCount);
+            calculateTotalAmountPerPerson(bill, tipPercentage, peopleCount);
         }
     });
 });
@@ -52,18 +46,24 @@ customPercentageInputElement.addEventListener('focus', (event) => {
 });
 
 customPercentageInputElement.addEventListener('input', (event) => {
-    const tipPercentageNumber = helper_funcs.extractNumberFromCustomPercentageInput(event.target);
-    let percentage;
-
-    if (tipPercentageNumber) {
-        percentage = tipPercentageNumber / 100;
-    }
+    const tipPercentage = helper_funcs.extractNumberFromCustomPercentageInput(event.target);
     const bill = helper_funcs.getBillAmount();
     const peopleCount = helper_funcs.getPeopleCount();
 
-    if (percentage && bill && peopleCount) {
-        calculateTipAmountPerPerson(bill, percentage, peopleCount);
-        calculateTotalAmountPerPerson(bill, percentage, peopleCount);
+    if (tipPercentage && bill && peopleCount) {
+        calculateTipAmountPerPerson(bill, tipPercentage, peopleCount);
+        calculateTotalAmountPerPerson(bill, tipPercentage, peopleCount);
+    }
+});
+
+peopleInputElement.addEventListener('input', () => {
+    const tipPercentage = helper_funcs.getSelectedTipPercentage();
+    const bill = helper_funcs.getBillAmount();
+    const peopleCount = helper_funcs.getPeopleCount();
+
+    if (tipPercentage && bill && peopleCount) {
+        calculateTipAmountPerPerson(bill, tipPercentage, peopleCount);
+        calculateTotalAmountPerPerson(bill, tipPercentage, peopleCount);
     }
 });
 

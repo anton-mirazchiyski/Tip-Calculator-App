@@ -52,13 +52,18 @@ export const clearSelectedCustomInput = () => {
 };
 
 export function extractNumberFromPercentageButton(percentageButton) {
-    return Number(percentageButton.textContent.slice(0, percentageButton.textContent.length - 1));
+    const percentageNumber =  Number(percentageButton.textContent.slice(0, percentageButton.textContent.length - 1));
+    const percentage = percentageNumber / 100;
+    return percentage
 }
 
 export function extractNumberFromCustomPercentageInput() {
     const content = customPercentageInputElement.value;
     if (content) {
-        return Number(content.match(/\d+/g)[0]);
+        const percentageNumber = Number(content.match(/\d+/g));
+        if (percentageNumber) {
+            return percentageNumber / 100;
+        }
     }
 }
 
