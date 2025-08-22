@@ -80,6 +80,34 @@ export function peopleCountIsValid(peopleCount) {
     return true;
 }
 
+
+export function performCalculations() {
+    // Only performs calculations if all three inputs are entered and/or selected
+    const bill = getBillAmount();
+    const tipPercentage = getSelectedTipPercentage();
+    const peopleCount = getPeopleCount();
+    
+    if (bill && tipPercentage && peopleCount) {
+        calculateTipAmountPerPerson(bill, tipPercentage, peopleCount);
+        calculateTotalAmountPerPerson(bill, tipPercentage, peopleCount);
+    }
+}
+
+function calculateTipAmountPerPerson(bill, percentage, peopleCount) {
+    const totalTipAmount = bill * percentage;
+    const tipAmountForPerson = totalTipAmount / peopleCount;
+
+    tipAmountResultElement.textContent = tipAmountForPerson.toFixed(2);
+}
+
+function calculateTotalAmountPerPerson(bill, percentage, peopleCount) {
+    const totalTipAmount = bill * percentage;
+    const totalPaymentAmount = bill + totalTipAmount;
+    const totalPaymentAmountForPerson = totalPaymentAmount / peopleCount;
+
+    totalAmountResultElement.textContent = totalPaymentAmountForPerson.toFixed(2);
+}
+
 export function resetData() {
     tipAmountResultElement.textContent = '0.00';
     totalAmountResultElement.textContent = '0.00';
