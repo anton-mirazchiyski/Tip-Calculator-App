@@ -44,3 +44,14 @@ footer {
     margin-top: auto;
     padding: 1rem;
 }
+
+.attribution {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.813rem;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}

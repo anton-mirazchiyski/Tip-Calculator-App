@@ -11,7 +11,7 @@
 
     ul.tip-percentage-list button,
     ul.tip-percentage-list input {
-        min-width: 137px;
+        min-width: 37vw; /* 137px */
     }
 
     .currency {
@@ -24,5 +24,9 @@
 
     .reset-result-btn {
         margin-top: 0;
+    }
+
+    footer {
+        margin-top: 2rem;
     }
 }
