@@ -45,5 +45,5 @@ section.result {
 }
 
 .reset-result-btn:hover {
-    background-color: #9fe8df;
+    background-color: #9fe8df !important;
 }

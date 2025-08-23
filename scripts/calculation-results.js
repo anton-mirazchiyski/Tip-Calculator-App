@@ -40,3 +40,5 @@ peopleInputElement.addEventListener('input', () => {
 });
 
 resetResultButtonElement.addEventListener('click', helper_funcs.resetData);
+
+window.addEventListener('load', helper_funcs.clearInputFields);

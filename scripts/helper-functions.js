@@ -6,13 +6,19 @@ const peopleInputElement = document.querySelector('input.people-input');
 const tipAmountResultElement = document.querySelector('.tip-amount');
 const totalAmountResultElement = document.querySelector('.total-amount');
 
+const resetResultButtonElement = document.querySelector('.reset-result-btn');
+
 const peopleInputErrorElement = document.querySelector('.people-input-error-message');
 
 
 export const getBillAmount = () => {
-    if (billInputElement.value != '') {
-        return Number(billInputElement.value);
+    const billAmount = Number(billInputElement.value);
+    
+    if (billAmount <= 0) {
+        resetResults();
+        return;
     }
+    return billAmount;
 }
 
 export const getSelectedTipPercentage = () => {
@@ -22,7 +28,7 @@ export const getSelectedTipPercentage = () => {
         return extractNumberFromPercentageButton(selectedPercentageButton);
     }
 
-    if (customPercentageInputElement.classList.contains('selected-custom-input') && customPercentageInputElement.value != '') {
+    if (customPercentageInputElement.classList.contains('selected-custom-input')) {
         return extractNumberFromCustomPercentageInput();
     }
 
@@ -33,10 +39,12 @@ export const getPeopleCount = () => {
     const peopleCount = Number(peopleInputElement.value);
 
     if (peopleInputElement.value == '') {
+        resetResults();
         return;
     }
     
     if (!peopleCountIsValid(peopleCount)) {
+        resetResults();
         return;
     }
     return peopleCount;
@@ -51,6 +59,10 @@ export const clearSelectedCustomInput = () => {
     customPercentageInputElement.value = '';
 };
 
+export const clearInputFields = () => {
+    [billInputElement, peopleInputElement, customPercentageInputElement].forEach(element => element.value = '');
+}
+
 export function extractNumberFromPercentageButton(percentageButton) {
     const percentageNumber =  Number(percentageButton.textContent.slice(0, percentageButton.textContent.length - 1));
     const percentage = percentageNumber / 100;
@@ -60,11 +72,15 @@ export function extractNumberFromPercentageButton(percentageButton) {
 export function extractNumberFromCustomPercentageInput() {
     const content = customPercentageInputElement.value;
     if (content) {
-        const percentageNumber = Number(content.match(/\d+/g));
+        const percentageNumber = content.match(/^\d+%?$/g);
         if (percentageNumber) {
-            return percentageNumber / 100;
+            const percentage = !percentageNumber[0].includes('%') 
+                    ? Number(percentageNumber[0]) / 100 
+                    : Number(percentageNumber[0].slice(0, percentageNumber[0].length - 1)) / 100;
+            return percentage
         }
     }
+    resetResults();
 }
 
 
@@ -90,6 +106,7 @@ export function performCalculations() {
     if (bill && tipPercentage && peopleCount) {
         calculateTipAmountPerPerson(bill, tipPercentage, peopleCount);
         calculateTotalAmountPerPerson(bill, tipPercentage, peopleCount);
+        resetResultButtonElement.style.backgroundColor = '#26c2ad';
     }
 }
 
@@ -109,10 +126,16 @@ function calculateTotalAmountPerPerson(bill, percentage, peopleCount) {
 }
 
 export function resetData() {
-    tipAmountResultElement.textContent = '0.00';
-    totalAmountResultElement.textContent = '0.00';
-
+    resetResults();
     clearAllSelectedButtons();
     clearSelectedCustomInput();
-    [billInputElement, peopleInputElement, customPercentageInputElement].forEach(element => element.value = '');
+    clearInputFields();
+
+    resetResultButtonElement.style.backgroundColor = '#0d686d';
+}
+
+export function resetResults() {
+    tipAmountResultElement.textContent = '0.00';
+    totalAmountResultElement.textContent = '0.00';
+    resetResultButtonElement.style.backgroundColor = '#0d686d';
 }
