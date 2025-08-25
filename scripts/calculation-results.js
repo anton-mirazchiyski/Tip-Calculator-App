@@ -5,9 +5,6 @@ const percentageButtonElements = document.querySelectorAll('button.percentage-bt
 const customPercentageInputElement = document.querySelector('input.custom-percentage-input');
 const peopleInputElement = document.querySelector('input.people-input');
 
-const tipAmountResultElement = document.querySelector('.tip-amount');
-const totalAmountResultElement = document.querySelector('.total-amount');
-
 const resetResultButtonElement = document.querySelector('.reset-result-btn');
 
 

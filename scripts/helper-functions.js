@@ -15,8 +15,7 @@ export const getBillAmount = () => {
     const billAmount = Number(billInputElement.value);
     
     if (billAmount <= 0) {
-        resetResults();
-        return;
+        return null;
     }
     return billAmount;
 }
@@ -39,13 +38,11 @@ export const getPeopleCount = () => {
     const peopleCount = Number(peopleInputElement.value);
 
     if (peopleInputElement.value == '') {
-        resetResults();
-        return;
+        return null;
     }
     
     if (!peopleCountIsValid(peopleCount)) {
-        resetResults();
-        return;
+        return null;
     }
     return peopleCount;
 }
@@ -65,8 +62,7 @@ export const clearInputFields = () => {
 
 export function extractNumberFromPercentageButton(percentageButton) {
     const percentageNumber =  Number(percentageButton.textContent.slice(0, percentageButton.textContent.length - 1));
-    const percentage = percentageNumber / 100;
-    return percentage
+    return percentageNumber / 100;
 }
 
 export function extractNumberFromCustomPercentageInput() {
@@ -77,10 +73,9 @@ export function extractNumberFromCustomPercentageInput() {
             const percentage = !percentageNumber[0].includes('%') 
                     ? Number(percentageNumber[0]) / 100 
                     : Number(percentageNumber[0].slice(0, percentageNumber[0].length - 1)) / 100;
-            return percentage
+            return percentage;
         }
     }
-    resetResults();
 }
 
 
@@ -98,17 +93,23 @@ export function peopleCountIsValid(peopleCount) {
 
 
 export function performCalculations() {
-    // Only performs calculations if all three inputs are entered and/or selected
+    // Only performs calculations if all three inputs are entered and/or selected and valid
     const bill = getBillAmount();
     const tipPercentage = getSelectedTipPercentage();
     const peopleCount = getPeopleCount();
-    
-    if (bill && tipPercentage && peopleCount) {
-        calculateTipAmountPerPerson(bill, tipPercentage, peopleCount);
-        calculateTotalAmountPerPerson(bill, tipPercentage, peopleCount);
-        resetResultButtonElement.style.backgroundColor = '#26c2ad';
+
+    for (const input of [bill, tipPercentage, peopleCount]) {
+        if (!input) {
+            resetResults();
+            return;
+        }
     }
+
+    calculateTipAmountPerPerson(bill, tipPercentage, peopleCount);
+    calculateTotalAmountPerPerson(bill, tipPercentage, peopleCount);
+    resetResultButtonElement.style.backgroundColor = '#26c2ad';
 }
+
 
 function calculateTipAmountPerPerson(bill, percentage, peopleCount) {
     const totalTipAmount = bill * percentage;
@@ -130,11 +131,13 @@ export function resetData() {
     clearAllSelectedButtons();
     clearSelectedCustomInput();
     clearInputFields();
-
-    resetResultButtonElement.style.backgroundColor = '#0d686d';
 }
 
 export function resetResults() {
+    if (tipAmountResultElement.textContent === '0.00' && totalAmountResultElement.textContent === '0.00') {
+        return;
+    }
+
     tipAmountResultElement.textContent = '0.00';
     totalAmountResultElement.textContent = '0.00';
     resetResultButtonElement.style.backgroundColor = '#0d686d';
