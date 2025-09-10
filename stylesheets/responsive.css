@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+@media (max-width: 550px) {
     .main-container {
         flex-direction: column;
         width: 100vw;
@@ -9,9 +9,13 @@
         width: 100%;
     }
 
+    ul.tip-percentage-list {
+        justify-content: space-between;
+    }
+
     ul.tip-percentage-list button,
     ul.tip-percentage-list input {
-        min-width: 37vw; /* 137px */
+        min-width: 8.5rem; /* 137px */
     }
 
     .currency {
@@ -24,6 +28,31 @@
 
     .reset-result-btn {
         margin-top: 0;
+    }
+
+    footer {
+        margin-top: 2rem;
+    }
+}
+
+
+@media (min-width: 551px) and (max-width: 1099px) {
+    .main-container {
+        flex-direction: column;
+        width: 34rem;
+    }
+
+    .main-container > section {
+        width: 100%;
+    }
+
+    ul.tip-percentage-list {
+        justify-content: space-between;
+    }
+
+    ul.tip-percentage-list button,
+    ul.tip-percentage-list input {
+        min-width: 8.5rem; /* 137px */
     }
 
     footer {
